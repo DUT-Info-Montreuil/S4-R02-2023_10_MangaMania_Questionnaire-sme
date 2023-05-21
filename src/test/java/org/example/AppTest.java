@@ -1,14 +1,23 @@
 package org.example;
 
-import junit.framework.Test;
+import entities.bo.QuestionFichierBO;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
+import models.IQuestionLoader;
+import org.junit.Before;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import utilities.exceptions.FileFormatInvalidException;
 
-/**
- * Unit test for simple App.
- */
-public class AppTest 
-    extends TestCase
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
+
+public class AppTest
+        extends TestCase
 {
     /**
      * Create the test case
@@ -23,16 +32,29 @@ public class AppTest
     /**
      * @return the suite of tests being tested
      */
-    public static Test suite()
-    {
-        return new TestSuite( AppTest.class );
-    }
+    private IQuestionLoader iQuestionLoader;
 
     /**
-     * Rigourous Test :-)
+     * Rigourous Test 🙂
      */
     public void testApp()
     {
-        assertTrue( true );
+        try {
+            iQuestionLoader = mock(IQuestionLoader.class);
+            List<QuestionFichierBO> questionFichierBOS = new ArrayList<>();
+            when(iQuestionLoader.chargementQuestionnaires("test Mockito")).thenReturn(questionFichierBOS);
+        } catch (Exception e) {
+        }
+
+        try {
+            when(iQuestionLoader
+                    .chargementQuestionnaires("fakePath\\thisFileDontExist"))
+                    .thenThrow(FileNotFoundException.class);
+
+            iQuestionLoader.chargementQuestionnaires("fakePath\\thisFileDontExist");
+            fail("filenotfound is not working");
+        } catch (Exception e) {
+            assertTrue("filenotfound is working",true);
+        }
     }
 }
