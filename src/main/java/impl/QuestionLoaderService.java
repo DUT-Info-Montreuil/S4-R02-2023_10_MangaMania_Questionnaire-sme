@@ -32,7 +32,9 @@ public class QuestionLoaderService implements IQuestionLoader {
             }
         }catch (FileNotFoundException e) {
             throw new FileNotFoundException();
-        } catch (IOException | CsvException e) {
+        } catch (FileQuestionEmptyException e) {
+            throw new FileQuestionEmptyException();
+        }catch (Exception e) {
             throw new FileFormatInvalidException();
         }
 
