@@ -31,4 +31,35 @@ public class QuestionFichierBO {
         return Id == that.Id && num == that.num && difficulte == that.difficulte && langue.equals(that.langue) && libelle.equals(that.libelle) && réponse.equals(that.réponse) && explication.equals(that.explication) && reference.equals(that.reference);
     }
 
+    public int getId() {
+        return Id;
+    }
+
+    public int getNum() {
+        return num;
+    }
+
+    public String getLangue() {
+        return langue;
+    }
+
+    public String getLibelle() {
+        return libelle;
+    }
+
+    public String getRéponse() {
+        return réponse;
+    }
+
+    public int getDifficulte() {
+        return difficulte;
+    }
+
+    public String getExplication() {
+        return explication;
+    }
+
+    public String getReference() {
+        return reference;
+    }
 }

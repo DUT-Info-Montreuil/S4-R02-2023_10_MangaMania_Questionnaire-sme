@@ -24,28 +24,28 @@ public class IQuestionLoaderTest {
     @Test
     public void TestFilepath() {
 //        //ERROR PATH
-            assertThrows(FileNotFoundException.class, () -> {
-                QuestionLoaderService questionLoaderService = new QuestionLoaderService();
-                questionLoaderService.chargementQuestionnaires("toto");
-            });
+        assertThrows(FileNotFoundException.class, () -> {
+            QuestionLoaderService questionLoaderService = new QuestionLoaderService();
+            questionLoaderService.chargementQuestionnaires("toto");
+        });
     }
     @Test
     public void testEmptyFile() {
         //TEST EMPTY FILE
-            assertThrows(FileQuestionEmptyException.class, () -> {
-                QuestionLoaderService questionLoaderService = new QuestionLoaderService();
-                questionLoaderService.chargementQuestionnaires("src\\test\\java\\fr\\iut\\montreuil\\R4_S02_2023\\questionnaire\\sme\\ressources\\questionsQuizz_vide.csv");
-            });
+        assertThrows(FileQuestionEmptyException.class, () -> {
+            QuestionLoaderService questionLoaderService = new QuestionLoaderService();
+            questionLoaderService.chargementQuestionnaires("src\\test\\java\\fr\\iut\\montreuil\\R4_S02_2023\\questionnaire\\sme\\ressources\\questionsQuizz_vide.csv");
+        });
     }
 
     @Test
     public void fileFormat () {
         //FORMAT INVALIDE
 
-            assertThrows(FileFormatInvalidException.class, () -> {
-                QuestionLoaderService questionLoaderService = new QuestionLoaderService();
-                questionLoaderService.chargementQuestionnaires("src\\test\\java\\fr\\iut\\montreuil\\R4_S02_2023\\questionnaire\\sme\\ressources\\FormatErrorQuestionsQuizz_V1.1.csv");
-            });
+        assertThrows(FileFormatInvalidException.class, () -> {
+            QuestionLoaderService questionLoaderService = new QuestionLoaderService();
+            questionLoaderService.chargementQuestionnaires("src\\test\\java\\fr\\iut\\montreuil\\R4_S02_2023\\questionnaire\\sme\\ressources\\FormatErrorQuestionsQuizz_V1.1.csv");
+        });
 
     }
     @Test
